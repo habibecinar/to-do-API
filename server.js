@@ -1,4 +1,5 @@
 import e from "express";
+import todoRoutes from "./routes/todoRoutes.js";
 
 export const app = e();
 
@@ -9,6 +10,9 @@ app.use(e.json());
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
+
+// Todo route'larını kullan
+app.use("/todos", todoRoutes);
 //sunucu dinletme
 const PORT =  3000;
 
