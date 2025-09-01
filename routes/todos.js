@@ -8,7 +8,26 @@ let nextId = 1;
 
 // Todo'ları listele
 router.get("/", (req, res) => {
-  res.json(todos);
+ let result = [...todos];//veriyi kopyaladık
+
+ // Arama (search)
+if (req.query.search) {
+  const keyword = req.query.search.toLowerCase();
+  result = result.filter(t => t.title.toLowerCase().includes(keyword));
+}
+    //tamamlanma durumuna göre filtreleme
+    if(req.query.completed !== undefined){
+        const isCompleted = req.query.completed === 'true';
+        result = result.filter(t => t.completed === isCompleted);
+    }
+    //sıralama
+    if(req.query.sort === 'asc'){
+        result.sort((a, b) => a.title.localeCompare(b.title));
+    } else if(req.query.sort === 'desc'){
+        result.sort((a, b) => b.title.localeCompare(a.title));
+    }
+
+    res.json(result);
 });
 
 // Yeni bir Todo ekle
