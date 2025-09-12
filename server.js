@@ -1,5 +1,10 @@
 import e from "express";
+import dotenv from "dotenv"
+import { connectDB } from "./config/db.js";
 import todoRoutes from "./routes/todos.js";
+
+dotenv.config();
+connectDB();
 
 export const app = e();
 
@@ -14,8 +19,7 @@ app.get("/", (req, res) => {
 // Todo route'larını kullan
 app.use("/todos", todoRoutes);
 //sunucu dinletme
-const PORT =  3000;
-
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
