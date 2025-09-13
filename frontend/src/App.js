@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-
+import "./style.css";
+// Basit bir Todo uygulaması
 function App() {
   const [todos, setTodos] = useState([]);
   const [newTodo, setNewTodo] = useState("");
