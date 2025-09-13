@@ -2,6 +2,7 @@ import e from "express";
 import dotenv from "dotenv"
 import { connectDB } from "./config/db.js";
 import todoRoutes from "./routes/todos.js";
+import cors from "cors";
 
 dotenv.config();
 connectDB();
@@ -10,6 +11,7 @@ export const app = e();
 
 // JSON verilerini işlemek için middleware
 app.use(e.json());
+app.use(cors()); // CORS middleware'ini ekle
 
 // Basit bir GET endpoint'i
 app.get("/", (req, res) => {
