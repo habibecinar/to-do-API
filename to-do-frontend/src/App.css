@@ -1,0 +1,147 @@
+/* Genel sayfa */
+body {
+  font-family: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f7fa;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+.container {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+/* Başlık */
+h1 {
+  text-align: center;
+  color: #bc7549;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  letter-spacing: 1px;
+}
+
+/* Input ve Add butonu */
+.input-group {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.input-group input[type="text"] {
+  flex: 1;
+  padding: 0.7rem 1rem;
+  font-size: 1rem;
+  border: 2px solid #dfe3eb;
+  border-radius: 10px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.input-group input[type="text"]:focus {
+  border-color: #e5a147;
+  box-shadow: 0 0 8px rgba(160,196,255,0.3);
+}
+
+.input-group button {
+  padding: 0.7rem 1.7rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #7ec8dc, #21769b);
+  color: #fff;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.input-group button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+/* Kolonlar (To Do, In Progress, Done) */
+.dnd-columns {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.dnd-column {
+  flex: 1;
+  background-color: #f7f9fc;
+  padding: 1rem;
+  border-radius: 8px;
+  min-height: 400px;
+}
+
+.dnd-column h3 {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #21769b;
+}
+
+/* Todo item */
+.todo-item, li {
+  padding: 0.9rem 1rem;
+  margin-bottom: 0.8rem;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.todo-item:hover, li:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+.todo-item span.completed, li span.completed {
+  text-decoration: line-through;
+  color: #b0b0b0;
+}
+
+.todo-item span.completed::before, li span.completed::before {
+  content: "✔";
+  color: #4396e3;
+  font-weight: bold;
+}
+
+/* Sil butonu */
+.todo-item button.delete, li button.delete {
+  padding: 0.25rem 0.6rem;
+ background: linear-gradient(135deg, #7ec8dc, #21769b);
+  color: #fff;
+  border: none;
+  border-radius: 9px;
+  font-weight: 600;
+}
+
+.todo-item button.delete:hover, li button.delete:hover {
+  background-color: #132a4c;
+  transform: translateY(-1px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .dnd-columns {
+    flex-direction: column;
+  }
+  .container {
+    margin: 2rem 1rem;
+    padding: 1.5rem;
+  }
+  .input-group button {
+    padding: 0.6rem 1rem;
+  }
+  .todo-item, li {
+    padding: 0.7rem 0.8rem;
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "to-do-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"npm run dev --prefix to-do-API\" \"npm start --prefix to-do-frontend\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  },
+  "dependencies": {
+    "@hello-pangea/dnd": "^18.0.1"
+  }
+}
