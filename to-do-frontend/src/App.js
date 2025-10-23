@@ -28,7 +28,7 @@ function App() {
       await fetch("http://localhost:3000/todos", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ title: newTodo, completed: false }),
+        body: JSON.stringify({ text: newTodo, completed: false }),
       });
       setNewTodo("");
       fetchTodos();
@@ -72,7 +72,7 @@ function App() {
     update = { completed: true, inProgress: false };
 
   try {
-    const todo = todos.find((t) => String(t._id) === String(draggableId));
+    const todo = todos.find((t) => String(t.id) === String(draggableId));
     if (!todo) return;
 
     await fetch(`http://localhost:3000/todos/${draggableId}`, {
@@ -116,11 +116,11 @@ function App() {
     <div ref={provided.innerRef} {...provided.droppableProps} className="dnd-column">
       <h3>To Do</h3>
       {toDo.map((todo, index) => (
-        <Draggable key={todo._id} draggableId={todo._id} index={index}>
+        <Draggable key={todo.id} draggableId={String(todo.id)} index={index}>
           {(provided) => (
             <li ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-              <span>{todo.title}</span>
-              <button className="delete" onClick={() => handleDelete(todo._id)}>Delete</button>
+              <span>{todo.text}</span>
+              <button className="delete" onClick={() => handleDelete(todo.id)}>Delete</button>
             </li>
           )}
         </Draggable>
@@ -140,7 +140,7 @@ function App() {
 
                 <h3>In Progress</h3>
                 {inProgress.map((todo, index) => (
-                  <Draggable key={todo._id} draggableId={todo._id} index={index}>
+                  <Draggable key={todo.id} draggableId={String(todo.id)} index={index}>
                     {(provided) => (
                       <li
                         className="todo-item"
@@ -148,10 +148,10 @@ function App() {
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
                       >
-                        <span>{todo.title}</span>
+                        <span>{todo.text}</span>
                         <button
                           className="delete"
-                          onClick={() => handleDelete(todo._id)}
+                          onClick={() => handleDelete(todo.id)}
                         >
                           Delete
                         </button>
@@ -174,7 +174,7 @@ function App() {
               >
                 <h3>Done</h3>
                 {done.map((todo, index) => (
-                  <Draggable key={todo._id} draggableId={todo._id} index={index}>
+                  <Draggable key={todo.id} draggableId={String(todo.id)} index={index}>
                     {(provided) => (
                       <li
                         className="todo-item"
@@ -182,10 +182,10 @@ function App() {
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
                       >
-                        <span className="completed">{todo.title}</span>
+                        <span className="completed">{todo.text}</span>
                         <button
                           className="delete"
-                          onClick={() => handleDelete(todo._id)}
+                          onClick={() => handleDelete(todo.id)}
                         >
                           Delete
                         </button>
